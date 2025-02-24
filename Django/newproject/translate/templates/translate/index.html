@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Çeviri Uygulaması</title>
+</head>
+<body>
+    <h2>Metin Çeviri Uygulaması</h2>
+    
+    <form method="POST">
+        {% csrf_token %}
+        <label for="text">Çevrilecek Metin:</label>
+        <textarea name="text" required></textarea>
+        
+        <label for="target_language">Hedef Dil:</label>
+        <select name="target_language">
+            <option value="tr">Türkçe</option>
+            <option value="en">İngilizce</option>
+            <option value="fr">Fransızca</option>
+            <option value="de">Almanca</option>
+            <option value="es">İspanyolca</option>
+            <option value="it">İtalyanca</option>
+        </select>
+        
+        <button type="submit">Çevir</button>
+    </form>
+
+    {% if translated_text %}
+        <h3>Çeviri Sonucu:</h3>
+        <p>{{ translated_text }}</p>
+    {% endif %}
+</body>
+</html>
